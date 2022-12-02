@@ -11,6 +11,7 @@
 
 class Plane {
     friend class SegmentWithPlane;
+    friend class TriangleWithPlane;
 public:
     Plane(Point p0,Point p1,Point p2);
 

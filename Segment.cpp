@@ -21,3 +21,7 @@ Segment::Segment() {
 
 }
 
+void Segment::output() {
+    p0.output();
+    p1.output();
+}

@@ -11,10 +11,12 @@ SegmentWithPlane::SegmentWithPlane(Plane plane, Segment segment)
 {
     this->plane = plane;
     this->segment = segment;
+    this->point = {};
 }
 
 bool SegmentWithPlane::SegmentInsertPlane()
 {
+    point = {};
     double t = 0; // 线段要求 0 <= t <= 1，射线要求 0 <= t
     double denominator = segment.direction_vector().dot(plane.normal_vector_unit());
     Vector pVector (segment.p0,plane.p0);
@@ -37,8 +39,8 @@ bool SegmentWithPlane::SegmentInsertPlane()
         double y = segment.p0.y + segment.direction_vector().y*t;
         double z = segment.p0.z + segment.direction_vector().z*t;
 
-        Point p(x,y,z);
-        p.output();
+        point = Point(x,y,z);
+
         return true;
     }
     else {
@@ -46,6 +48,9 @@ bool SegmentWithPlane::SegmentInsertPlane()
     }
 }
 
+Point SegmentWithPlane::GetPoint() {
+    return point;
+}
 
 
 /*

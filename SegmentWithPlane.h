@@ -13,9 +13,11 @@ class SegmentWithPlane {
 public:
     SegmentWithPlane(Plane plane,Segment segment);
     bool SegmentInsertPlane();
+    Point GetPoint();
 private:
     Plane plane;
     Segment segment;
+    Point point;
 };
 
 

@@ -12,10 +12,9 @@ class Segment {
     friend class SegmentWithPlane;
 public:
     Segment(Point p0,Point p1);
-
     Segment();
-
     Vector direction_vector();
+    void output();//输出
 private:
     Point p0;
     Point p1;

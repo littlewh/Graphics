@@ -10,11 +10,10 @@ class Point {
     friend class Segment;
     friend class Plane;
     friend class SegmentWithPlane;
+    friend class TriangleWithPlane;
 public:
     Point(double x, double y, double z);
-
     Point();
-
     Point operator+(const Point &p2);//加 点
     Point operator-(const Point &p2);//减
     void output();//输出
