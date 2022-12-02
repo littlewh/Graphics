@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: Graphics
+# Project: Vector
 # Configurations: Debug
 # =============================================================================
 
@@ -61,6 +61,30 @@ build CMakeFiles/Vector.dir/Vector.cpp.obj: CXX_COMPILER__Vector_Debug D$:/CLion
   OBJECT_DIR = CMakeFiles\Vector.dir
   OBJECT_FILE_DIR = CMakeFiles\Vector.dir
 
+build CMakeFiles/Vector.dir/Point.cpp.obj: CXX_COMPILER__Vector_Debug D$:/CLionProjects/Graphics/Point.cpp || cmake_object_order_depends_target_Vector
+  DEP_FILE = CMakeFiles\Vector.dir\Point.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
+  OBJECT_DIR = CMakeFiles\Vector.dir
+  OBJECT_FILE_DIR = CMakeFiles\Vector.dir
+
+build CMakeFiles/Vector.dir/Segment.cpp.obj: CXX_COMPILER__Vector_Debug D$:/CLionProjects/Graphics/Segment.cpp || cmake_object_order_depends_target_Vector
+  DEP_FILE = CMakeFiles\Vector.dir\Segment.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
+  OBJECT_DIR = CMakeFiles\Vector.dir
+  OBJECT_FILE_DIR = CMakeFiles\Vector.dir
+
+build CMakeFiles/Vector.dir/SegmentWithPlane.cpp.obj: CXX_COMPILER__Vector_Debug D$:/CLionProjects/Graphics/SegmentWithPlane.cpp || cmake_object_order_depends_target_Vector
+  DEP_FILE = CMakeFiles\Vector.dir\SegmentWithPlane.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
+  OBJECT_DIR = CMakeFiles\Vector.dir
+  OBJECT_FILE_DIR = CMakeFiles\Vector.dir
+
+build CMakeFiles/Vector.dir/Plane.cpp.obj: CXX_COMPILER__Vector_Debug D$:/CLionProjects/Graphics/Plane.cpp || cmake_object_order_depends_target_Vector
+  DEP_FILE = CMakeFiles\Vector.dir\Plane.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
+  OBJECT_DIR = CMakeFiles\Vector.dir
+  OBJECT_FILE_DIR = CMakeFiles\Vector.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Vector
@@ -69,7 +93,7 @@ build CMakeFiles/Vector.dir/Vector.cpp.obj: CXX_COMPILER__Vector_Debug D$:/CLion
 #############################################
 # Link the executable Vector.exe
 
-build Vector.exe: CXX_EXECUTABLE_LINKER__Vector_Debug CMakeFiles/Vector.dir/main.cpp.obj CMakeFiles/Vector.dir/Vector.cpp.obj
+build Vector.exe: CXX_EXECUTABLE_LINKER__Vector_Debug CMakeFiles/Vector.dir/main.cpp.obj CMakeFiles/Vector.dir/Vector.cpp.obj CMakeFiles/Vector.dir/Point.cpp.obj CMakeFiles/Vector.dir/Segment.cpp.obj CMakeFiles/Vector.dir/SegmentWithPlane.cpp.obj CMakeFiles/Vector.dir/Plane.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Vector.dir

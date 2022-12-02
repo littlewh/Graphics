@@ -5,43 +5,50 @@
 #include "Vector.h"
 #include <iostream>
 #include <cmath>
-#include "assert.h"
+#include "cassert"
 #define PI 3.1415926;
 
-template <typename Type>
-Vector<Type>::Vector(Type x,Type y,Type z)
+Vector::Vector(double x,double y,double z)
 {
     this->x = x;
     this->y = y;
     this->z = z;
 }
 
-template <typename Type>
-Vector<Type> Vector<Type>:: operator+ (const Vector<Type> &v2)
+Vector::Vector(Point p1,Point p2)
 {
-    return Vector<Type>(this->x + v2.x, this->y + v2.y, this->z + v2.z);
+    this->x = p2.x - p1.x;
+    this->y = p2.y - p1.y;
+    this->z = p2.z - p1.z;
 }
 
-template <typename Type>
-Vector<Type> Vector<Type>:: operator- (const Vector<Type> &v2)
+Vector Vector:: operator+ (const Vector &v2)
 {
-    return Vector<Type>(this->x - v2.x, this->y - v2.y, this->z - v2.z);
+    return Vector(this->x + v2.x, this->y + v2.y, this->z + v2.z);
 }
 
-template <typename Type>
-Vector<Type> Vector<Type>::operator*(int number)
+Vector Vector:: operator- (const Vector &v2)
 {
-    return Vector<Type>(this->x * number, this->y * number, this->z * number);
+    return Vector(this->x - v2.x, this->y - v2.y, this->z - v2.z);
 }
 
-template <typename Type>
-Type Vector<Type>::dot(const Vector<Type> &v2)
+Vector Vector::operator*(double number)
+{
+    return Vector(this->x * number, this->y * number, this->z * number);
+}
+
+Vector Vector::operator/(double number)
+{
+    assert(number != 0);
+    return Vector(this->x / number, this->y / number, this->z / number);
+}
+
+double Vector::dot(const Vector &v2)
 {
     return (this->x * v2.x) + (this->y * v2.y) + (this->z * v2.z);
 }
 
-template <typename Type>
-Vector<Type> Vector<Type>::cross(const Vector<Type> &v2)
+Vector Vector::cross(const Vector &v2)
 {
     int x1 = this->x;
     int x2 = v2.x;
@@ -49,36 +56,32 @@ Vector<Type> Vector<Type>::cross(const Vector<Type> &v2)
     int y2 = v2.y;
     int z1 = this->z;
     int z2 = v2.z;
-    return Vector<Type>((y1 * z2) - (y2 * z1),(z1 * x2) - (z2 * x1),(x1 * y2) - (x2 * y1));
+    return Vector((y1 * z2) - (y2 * z1),(z1 * x2) - (z2 * x1),(x1 * y2) - (x2 * y1));
 }
 
-template <typename Type>
-Type Vector<Type>::norm()
+double Vector::length()
 {
-    return (this->x * this->x) + (this->y * this->y) + (this->z * this->z);
+    double length = (this->x * this->x) + (this->y * this->y) + (this->z * this->z);
+    return sqrt(length);
 }
 
-template <typename Type>
-Type Vector<Type>::angle(Vector<Type> v2)
+double Vector::angle(Vector v2)
 {
-    double norm_v1 = sqrt(this->norm());
-    double norm_v2 = sqrt(v2.norm());
+    double norm_v1 = this->length();
+    double norm_v2 = v2.length();
     assert(0 != (norm_v1 * norm_v2));
     double cos_angle  = this->dot(v2) / (norm_v1 * norm_v2);
 //    return cos_angle;
     if ((this->x * v2.y - v2.x - this->y) > 0){//夹角方向
-        return (acos(cos_angle)) * 180 / PI;
+        return (acos(cos_angle)) * 180 / PI
     }
     else {
-        return -1 * (acos(cos_angle)) * 180 / PI;
+        return -1 * (acos(cos_angle)) * 180 / PI
     }
 
 }
 
-template <typename Type>
-void Vector<Type>::output()
+void Vector::output()
 {
     std::cout << "[" << x << "," << y << "," << z << "]" << std::endl;
 }
-template class Vector<int>;
-template class Vector<double>;

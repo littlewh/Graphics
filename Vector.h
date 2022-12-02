@@ -5,23 +5,28 @@
 #ifndef VECTOR_VECTOR_H
 #define VECTOR_VECTOR_H
 
-#include <iostream>
-template <typename Type>
+#include "Point.h"
+
 class Vector {
+    friend class SegmentWithPlane;
 public:
-    Vector(Type x, Type y, Type z);
-    Vector operator+(const Vector<Type> &v2);//加
-    Vector operator-(const Vector<Type> &v2);//减
-    Vector operator*(int number);//数乘
-    Type dot(const Vector<Type> &v2);//点乘
-    Vector cross(const Vector<Type> &v2);//叉乘
-    Type norm();//模的平方
-    Type angle(Vector<Type> v2);//求夹角
+    Vector(double x, double y, double z);
+    Vector(Point p1,Point p2);
+    Vector operator+(const Vector &v2);//加
+    Vector operator-(const Vector &v2);//减
+    Vector operator*(double number);//数乘
+    Vector operator/(double number);//除法
+    double dot(const Vector &v2);//点乘
+    Vector cross(const Vector &v2);//叉乘
+    double length();//模
+    double angle(Vector v2);//求夹角
     void output();//输出
 private:
-    Type x;
-    Type y;
-    Type z;
+    double x;
+    double y;
+    double z;
 };
+
+
 
 #endif //VECTOR_VECTOR_H
