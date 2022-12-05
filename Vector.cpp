@@ -69,7 +69,7 @@ double Vector::angle(Vector v2)
 {
     double norm_v1 = this->length();
     double norm_v2 = v2.length();
-    assert(0 != (norm_v1 * norm_v2));
+    assert(0 != (norm_v1 * norm_v2));//除数为零
     double cos_angle  = this->dot(v2) / (norm_v1 * norm_v2);
 //    return cos_angle;
     if ((this->x * v2.y - v2.x - this->y) > 0){//夹角方向
@@ -85,3 +85,5 @@ void Vector::output()
 {
     std::cout << "[" << x << "," << y << "," << z << "]" << std::endl;
 }
+
+Vector::Vector() {}

@@ -77,7 +77,6 @@ bool TriangleWithPlane::IntersectionDfTriangleAndPlane() {
         segment = Segment(p1,p2);
         return true;
     }
-
     else if((dot1 > 0 && dot3 > 0 && dot2 < 0) || (dot1 < 0 && dot3 < 0 && dot2 > 0)){
         Segment l1(triangle.p0,triangle.p1);
         Segment l2(triangle.p2,triangle.p1);

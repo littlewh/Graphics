@@ -12,6 +12,9 @@ class Vector {
 public:
     Vector(double x, double y, double z);
     Vector(Point p1,Point p2);
+
+    Vector();
+
     Vector operator+(const Vector &v2);//加
     Vector operator-(const Vector &v2);//减
     Vector operator*(double number);//数乘

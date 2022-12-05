@@ -12,7 +12,7 @@
 class SegmentWithPlane {
 public:
     SegmentWithPlane(Plane plane,Segment segment);
-    bool SegmentInsertPlane();
+    bool SegmentInsertPlane();//线段与平面
     Point GetPoint();
 private:
     Plane plane;

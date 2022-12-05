@@ -6,6 +6,7 @@
 #include "Plane.h"
 #include "SegmentWithPlane.h"
 #include "TriangleWithPlane.h"
+#include "TriangleWithTriangle.h"
 
 void VectorTest(){
     Vector v1(1.5, 2.5, 3.5);
@@ -59,12 +60,12 @@ void SegWithPlane()
     SegmentWithPlane ans(t,l);
 
     if(ans.SegmentInsertPlane() == true){
-        printf("线段与平面相交相交,交点坐标为：\n");
+        printf("线段与平面相交相交,交点坐标为: \n");
         Point point = ans.GetPoint();
         point.output();
     }
     else {
-        printf("不相交\n");
+        printf("线段与平面不相交\n");
     }
 }
 
@@ -80,20 +81,31 @@ void TriWithPlane(){
     TriangleWithPlane ans(p,t);
 
     if(ans.IntersectionDfTriangleAndPlane() == true){
-        printf("三角面片与平面相交,交线的坐标为:\n");
+        printf("三角面片与平面相交,交线的坐标为: \n");
         Segment segment = ans.GetSegment();
         segment.output();
     }
     else {
-        printf("不相交\n");
+        printf("三角面片与平面不相交\n");
     }
+}
+void TriWithTri(){
+    Point a(1.0,0.0,1.0);
+    Point b(-9.0,0.0,0.0);
+    Point c(0.0,8.0,0.0);
+    Plane p(a,b,c);
+    Point a2(11.0,0.0,1.0);
+    Point b2(-9.0,0.0,3.0);
+    Point c2(2.0,-1.0,0.0);
+    Plane t(a2,b2,c2);
+
 }
 
 int main() {
 //    std::cout << "Hello, World!" << std::endl;
 //    VectorTest();
 //    PointTest();
-    SegWithPlane();
-    TriWithPlane();
+//    SegWithPlane();
+    TriWithTri();
     return 0;
 }

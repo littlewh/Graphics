@@ -5,7 +5,7 @@
 #include "SegmentWithPlane.h"
 #include <cmath>
 
-#define epsilon 1e-16;
+#define epsilon 1e-16;//精度误差
 
 SegmentWithPlane::SegmentWithPlane(Plane plane, Segment segment)
 {
@@ -51,7 +51,6 @@ bool SegmentWithPlane::SegmentInsertPlane()
 Point SegmentWithPlane::GetPoint() {
     return point;
 }
-
 
 /*
  *  3.14159265358979311599796346854418516159057617187500

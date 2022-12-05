@@ -11,9 +11,9 @@
 
 class TriangleWithPlane {
 public:
-    TriangleWithPlane(Plane plane,Plane Triangle);
-    bool IntersectionDfTriangleAndPlane();
-    Segment GetSegment();
+    TriangleWithPlane(Plane plane,Plane triangle);
+    bool IntersectionDfTriangleAndPlane();//三角面片与平面
+    Segment GetSegment();//获取线段
 private:
     Plane plane;
     Plane triangle;

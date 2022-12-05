@@ -11,6 +11,7 @@ class Point {
     friend class Plane;
     friend class SegmentWithPlane;
     friend class TriangleWithPlane;
+    friend class TriangleWithTriangle;
 public:
     Point(double x, double y, double z);
     Point();
