@@ -16,6 +16,7 @@ public:
     bool SignalCheck(Plane triangle,Vector pnv,double d);
     bool OverlayCheck(double a,double b,double c,double d);
     Vector GetSegment();//获取线段
+
 private:
     Plane triangle1;
     Plane triangle2;

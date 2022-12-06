@@ -68,6 +68,25 @@ bool TriangleWithTriangle::SignalCheck(Plane triangle,Vector pnv,double d) {
     return true;
 }
 
+bool TriangleWithTriangle::OverlayCheck(double a, double b, double c, double d) {
+    if(a < c && c < b && b < d){
+        return true;
+    }
+    if(c < a && a < d && d < b){
+        return true;
+    }
+    if(a < c && c < d && d < b){
+        return true;
+    }
+    if(c < a && a < b && b < d){
+        return true;
+    }
+    if(a == c && b == d && c < d){
+        return true;
+    }
+
+    return false;
+}
 
 bool TriangleWithTriangle::IntersectionOfTriangleAndTriangle() {
     double ep = epsilon;
@@ -98,7 +117,52 @@ bool TriangleWithTriangle::IntersectionOfTriangleAndTriangle() {
     }
     Vector d = pwp.GetSegment();
 
+    Vector v01_temp(triangle1.p0.x,triangle1.p0.y,triangle1.p0.z);
+    double v01 = d.dot(v01_temp);
+    Vector v02_temp(triangle1.p1.x,triangle1.p1.y,triangle1.p1.z);
+    double v02 = d.dot(v02_temp);
+    Vector v03_temp(triangle1.p2.x,triangle1.p2.y,triangle1.p2.z);
+    double v03 = d.dot(v03_temp);
 
+    Point point(0,0,0);
+    Vector tpv1(point,triangle1.p0);
+    Vector tpv2(point,triangle1.p1);
+    Vector tpv3(point,triangle1.p2);
+    double dot1 = pnv2.dot(tpv1) + triangle2.D;
+    double dot2 = pnv2.dot(tpv2) + triangle2.D;
+    double dot3 = pnv2.dot(tpv3) + triangle2.D;
+
+    if(dot1 - dot3 == 0 || dot2 - dot3 == 0){
+        return false;
+    }
+    double t00 = v01 + (v03 - v01)*dot1/(dot1 - dot3);
+    double t01 = v02 + (v03 - v02)*dot2/(dot2 - dot3);
+
+    Vector v11_temp(triangle2.p0.x,triangle2.p0.y,triangle2.p0.z);
+    double v11 = d.dot(v11_temp);
+    Vector v12_temp(triangle2.p1.x,triangle2.p1.y,triangle2.p1.z);
+    double v12 = d.dot(v12_temp);
+    Vector v13_temp(triangle2.p2.x,triangle2.p2.y,triangle2.p2.z);
+    double v13 = d.dot(v13_temp);
+
+    Vector tpv11(point,triangle2.p0);
+    Vector tpv12(point,triangle2.p1);
+    Vector tpv13(point,triangle2.p2);
+    double dot11 = pnv1.dot(tpv11) + triangle1.D;
+    double dot12 = pnv1.dot(tpv12) + triangle1.D;
+    double dot13 = pnv1.dot(tpv13) + triangle1.D;
+
+    if(dot11 - dot13 == 0 || dot12 - dot13 == 0){
+        return false;
+    }
+    double t10 = v11 + (v13 - v11)*dot11/(dot11 - dot13);
+    double t11 = v12 + (v13 - v12)*dot12/(dot12 - dot13);
+
+    if(OverlayCheck(t00,t01,t10,t11) == false){
+        return false;
+    }
+    double t = std::max(std::max(t00,t01),std::max(t10,t11));
+    segment = d * t;
 
     return true;
 }

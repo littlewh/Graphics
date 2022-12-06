@@ -98,7 +98,15 @@ void TriWithTri(){
     Point b2(-9.0,0.0,3.0);
     Point c2(2.0,-1.0,0.0);
     Plane t(a2,b2,c2);
-
+    TriangleWithTriangle ans(p,t);
+    if(ans.IntersectionOfTriangleAndTriangle() == true){
+        printf("三角面片与三角面片相交\n");
+        Vector segment = ans.GetSegment();
+        segment.output();
+    }
+    else {
+        printf("三角面片与三角面片不相交\n");
+    }
 }
 
 int main() {
@@ -106,6 +114,9 @@ int main() {
 //    VectorTest();
 //    PointTest();
 //    SegWithPlane();
+//    TriWithPlane();
     TriWithTri();
+
     return 0;
+
 }
